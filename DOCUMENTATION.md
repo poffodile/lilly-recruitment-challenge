@@ -1,6 +1,11 @@
 # Lilly Technical Challenge Documentation Template
+# Finished Backend and Frontend Setup
+ - I set up the Python virtual environment (venv) to manage the project's dependencies.
+ - After that, I installed all the required packages by running pip install -r requirements.txt.
+ - To ensure the backend was working correctly, I started the   server and checked that it was running successfully by visiting http://localhost:8000/medicines in my browser.
+ - I also tested the frontend by opening the index.html file in my browser to confirm everything was loading as expected.
 
-*This documentation template serves as a place for you to discuss how you approached this challenge, any issues you faced & how you overcame them, or any other points that you feel would be relevant for the interviewers to know. The text in italics is here to guide you - feel free to remove it once you fill out each section!*
+
 
 ***Not every section in this document is required. This is just a template to help get you started. Feel free to add or remove sections as you feel necessary.***
 
