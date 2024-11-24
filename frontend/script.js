@@ -19,13 +19,20 @@ async function getData() {
 
         data.forEach ((medicine) => {
             const row = document.createElement("tr");
-
-            const name = document.createElement("td");
-            name.textContent = medicine.name ;
+            // create a new row for each medicine
+            const name = document.createElement("td");   // handles invalid names
+            name.textContent = medicine.name && medicine.name.trim() !== "" ? medicine.name : "No Name";
             row.appendChild(name);
 
+            // handles invalid prices 
             const price = document.createElement("td");
-            price.textContent = medicine.price;
+            if (typeof medicine.price === "number" && medicine.price >0 ) {
+                price.textContent = medicine.price;   // handles valid prices
+               
+            } else {
+                price.textContent = "No Price"; // handles invalid prices
+            }
+            
 
             row.appendChild(price);
 

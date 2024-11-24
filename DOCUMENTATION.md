@@ -5,6 +5,7 @@
  - After that, I installed all the required packages by running pip install -r requirements.txt.
  - To ensure the backend was working correctly, I started the   server and checked that it was running successfully by visiting http://localhost:8000/medicines in my browser.
  - I also tested the frontend by opening the index.html file in my browser to confirm everything was loading as expected.
+ - in the 2nd objective in order to handle emppty entries , i made it that if the medicine name is missing or empty  or even a whitespace that it would display "No Name". The same for the price, if it is greater than 0 , ( this is to help with validation). it also checks to make sure that it is not just a string of spaces 
 
 
 
