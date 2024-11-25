@@ -1,3 +1,5 @@
+   // Global variable to store medicines
+let medicines = [];
 // fetch data from the backend and display in the frontend
 async function getData() {
     const url = "http://localhost:8000/medicines";
@@ -23,9 +25,16 @@ async function getData() {
         data.forEach ((medicine) => {
             const row = document.createElement("tr");
             // create a new row for each medicine
-            const name = document.createElement("td");   // handles invalid names
-            name.textContent = medicine.name && medicine.name.trim() !== "" ? medicine.name : "No Name";
+            const name = document.createElement("td");
+            if (medicine.name && medicine.name.trim() !== "") {
+                name.textContent = medicine.name; // Valid name
+            } else {
+                name.textContent = "No Name"; // Invalid name
+                name.classList.add("invalid-data"); // Add red styling for invalid data
+            }
             row.appendChild(name);
+
+            
 
             // handles invalid prices 
             const price = document.createElement("td");
@@ -34,6 +43,7 @@ async function getData() {
                
             } else {
                 price.textContent = "No Price"; // handles invalid prices
+                price.classList.add("invalid-data"); // Add red styling for invalid data
             }
             
 
@@ -46,6 +56,9 @@ async function getData() {
     
 
     }
+        // Add event listener for the search bar
+
+    
 
   const form = document.querySelector("#medicine-form");  // references the form element
     async  function  sendData() {
@@ -66,8 +79,6 @@ async function getData() {
             return;
           }
 
-
-
         try {
             const response = await fetch("http://localhost:8000/create", {
             method: "POST",
@@ -86,10 +97,36 @@ async function getData() {
                 getData(); // refreshes the table with the new data
             } catch (error) {
                 console.error("Error adding medicine: ", error.message);
+                document.getElementById("feedback-message").textContent = "Failed to add medicine. Please try again";
                 alert ("Failed to add medicine. Please try again");
             }
         }
 
+
+        async function fetchAveragePrice() {
+          const url = "http://localhost:8000/average";
+          try {
+              const response = await fetch(url);
+              if (!response.ok) {
+                  throw new Error(`Response status: ${response.status}`);
+              }
+      
+              const data = await response.json();
+              const avgPriceElement = document.getElementById("average-price");
+              if (data.average_price > 0) {
+                  avgPriceElement.textContent = `£${data.average_price}`;
+              } else {
+                  avgPriceElement.textContent = data.message; // e.g., "No valid prices found."
+              }
+          } catch (error) {
+              console.error("Error fetching average price:", error.message);
+              document.getElementById("average-price").textContent = "Error fetching average price.";
+          }
+      }
+      
+      // Call the function when the page loads
+      fetchAveragePrice();
+      
         
     
 // Handle form submission

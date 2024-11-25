@@ -30,3 +30,312 @@ body {
 }
 
 /* ---- Your custom styles below ---- */
+
+/* Header Styling*/
+header {
+    text-align: center;
+    background-color: #0f5db7; /* Highlighted header */
+    color: white;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+/* Table Styling */
+table {
+    width: 90%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    font-size: 1em;
+    background-color: #fff; /* White background for clarity */
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+th:first-child, td:first-child {
+    text-align: left; /* Align the first column (Medicine Name) to the left */
+}
+
+
+/* Table Borders */
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+/* Table Header Styling */
+thead {
+    background-color: #660fb7;
+    color: white;
+}
+
+/* Alternating Row Colors */
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Padding for Table Cells */
+th, td {
+    padding: 12px;
+    text-align: center;
+}
+
+/* Hover Effect on Rows */
+tbody tr:hover {
+    background-color: #ddd;
+}
+
+/* Form Styling */
+/* Form Styling */
+form {
+    flex: 1; /* Allow form to take up less space */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f3e5f5; /* Very light lavender */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Fixed width for the form *//
+}
+form label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+form input:focus {
+    outline: none;
+    border-color: #660fb7; /* Highlighted border on focus */
+}
+
+
+form button {
+    background-color: #660fb7; /* Bold purple */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+form button:hover {
+    background-color: #4a0072; /* Darker purple on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Align the "Add New Medicine Below" header to the left */
+#form-header {
+    text-align: 1.5em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+   margin-left: 30px; /* Optional: Add some padding from the left edge */
+    
+    color: #660fb7; /* Optional: Match the purple theme */
+}
+
+
+#feedback-message {
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: center;
+} 
+#feedback-message.success {
+    color: #28a745; /* Green for success */
+}
+
+#feedback-message.error {
+    color: red; /* Red for error */
+}
+
+
+/* Center Content */
+main {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+/* Styling for the Add New Medicine Below Header */
+main h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #660fb7; /* Bold purple */
+    background-color: #f4e9fc; /* Light purple */
+    padding: 15px;
+    border-radius: 10px;
+    max-width: 400px;
+    border: 1px solid #660fb7; /* Border to match the theme */
+}
+.main-content {
+    display: flex;
+    justify-content: space-between; /* Space between table and form */
+    align-items: flex-start; /* Align form and table at the top */
+    gap: 20px; /* Add some space between the elements */
+    padding: 20px;
+}
+  
+/* Table Styling for Horizontal Layout */
+table {
+    flex: 2; /* Allow table to take up more space */
+    width: 100%;
+    margin: 0;
+}
+
+
+.invalid-data {
+    color: red;
+    font-weight: bold;
+    background-color: #ffe5e5;
+}
+
+/* Mobile Styles (screen width 768px or smaller) */
+@media screen and (max-width: 768px) {
+    /* Body and global settings */
+    body {
+        font-size: 14px; /* Adjust font size for readability */
+        padding: 10px; /* Reduce overall padding */
+    }
+
+    /* Header */
+    header {
+        font-size: 1.2em; /* Reduce header size */
+        padding: 15px 5px; /* Adjust padding */
+    }
+
+    /* Table container for scrolling */
+    table {
+        font-size: 0.9em; /* Smaller table font */
+        overflow-x: auto; /* Add horizontal scroll for smaller screens */
+        display: block; /* Make table scrollable */
+        width: 100%;
+    }
+
+    thead {
+        display: none; /* Hide table headers for a cleaner look */
+    }
+
+    tbody tr {
+        display: block; /* Display rows as blocks */
+        margin-bottom: 10px;
+    }
+
+    tbody td {
+        display: block; /* Stack columns */
+        text-align: left; /* Align text to the left */
+        padding: 10px;
+        border: 1px solid #ddd; /* Add borders for separation */
+    }
+
+    tbody td::before {
+        content: attr(data-label); /* Show table headers in front of each value */
+        font-weight: bold;
+        display: block;
+    }
+
+    /* Form Styling */
+    #medicine-form {
+        width: 100%;
+        padding: 15px;
+        margin: 10px auto;
+    }
+
+    #medicine-form input, #medicine-form button {
+        font-size: 1em; /* Larger inputs for touch-friendliness */
+        padding: 10px;
+        width: 100%; /* Full width */
+        margin-bottom: 10px;
+    }
+
+    #feedback-message {
+        font-size: 0.8em; /* Smaller feedback font */
+    }
+
+    /* "Add New Medicine Below" button styling */
+    #add-header {
+        text-align: center;
+        font-size: 1.2em;
+        padding: 10px;
+        border-radius: 8px;
+        background-color: #dabaf9; /* Subtle purple background */
+        margin-bottom: 10px;
+    }
+}
+
+/* Tablet Styles (screen width between 768px and 1024px) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    body {
+        font-size: 16px; /* Slightly larger font for tablets */
+        padding: 20px;
+    }
+
+    header {
+        font-size: 1.5em; /* Medium-sized headers for tablets */
+        padding: 20px 10px;
+    }
+
+    table {
+        width: 100%;
+        font-size: 1em; /* Normal font size for tablets */
+    }
+
+    tbody td {
+        padding: 15px; /* Adjust padding for clarity */
+        font-size: 0.95em;
+    }
+
+    #medicine-form {
+        max-width: 80%; /* Narrower form for tablets */
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    #medicine-form input, #medicine-form button {
+        font-size: 1.1em; /* Slightly larger inputs */
+        padding: 12px;
+    }
+}
+
+.search-container {
+    margin: 20px auto;
+    text-align: center;
+}
+
+#search-bar {
+    padding: 10px;
+    width: 50%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+}
+
+#average-price-section {
+    text-align: center;
+    margin: 20px auto;
+    padding: 15px;
+    background-color: #f9f9f9; /* Light background */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+}
+
+#average-price-section h3 {
+    color: #660fb7; /* Match the purple theme */
+    font-size: 1.5rem;
+}
+
+#average-price {
+    font-size: 1.2rem;
+    color: #333; /* Neutral text color */
+    font-weight: bold;
+}
