@@ -1,59 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medicine Tracker </title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Medicine Tracker</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
     <div class="disclaimer" id="disclaimer">
         Disclaimer: All medicine names and prices used in this application are fictional and do not represent any real medicine(s).
     </div>
     <header>
-        <h1>Medicine Tracker</h1>
-        <h2> List of Available Medicines</h2>        
+        <h1>Medicine Tracker</h1>     
     </header>
 
-    <div class="search-container">
+    <main class="main-layout">
+        <section class="left-box">
+            <h2>List of Available Medicines</h2>
+            
+            <div>
+                <label for="sort-select">Sort by:</label>
+                <select id="sort-select">
+                  <option value="name-asc">Name (A-Z)</option>
+                  <option value="name-desc">Name (Z-A)</option>
+                  <option value="price-asc">Price (Low to High)</option>
+                  <option value="price-desc">Price (High to Low)</option>
+                </select>
+              </div>
+              
+   
+            <div class="search-container">
         <label for="search-bar">Search Medicines: </label>
         <input type="text" id="search-bar" placeholder="Enter medicine name..." />
     </div>
-    <br>   
-   
+      
+ <div class = "table-container">
     <table aria-label="List of Medicine and their Prices">
             <thead>
-            <tr>
+              <tr>
                 <th> Medicine Name </th>
                 <th> Price (£) </th>
             </tr>
         </thead>
-        <tbody id = "medicine-table">
-            </tbody>
-    </table>
-    <main>
+        <tbody id ="medicine-table">
+       </tbody>
+     </table>
+   </div>
+ </section>
+         
 
-        <section id="average-price-section">
-            <h3>Average Price of Medicines</h3>
-            <p id="average-price">Loading...</p>
-        </section>
-        
-        <h3 id="form-header">Add New Medicine Below</h3>
-        <form id="medicine-form" aria-labelledby="form-header">
-            <label for ="medicine-name"> Medicine Name: </label>
-            <input type = "text" id = "medicine-name" name ="name" placeholder = "Enter medicine name" required autocomplete="off">
-            <br>
-            <label for ="medicine-price"> Price (£): </label>
-            <input type = "number" id = "medicine-price" name = "price" placeholder = "Enter medicine price" step = "0.01" required autocomplete="off">
-         <br>
-            <button type = "submit"> Add Medicine </button>
-        </form>
 
         <div id="feedback-message" aria-live="polite"></div>
+ <!-- Right Content (Report and Form) -->
+ <div class="right-content">
+       <!-- Quarterly Report -->
+    <section id="average-price-section">
+        <h3>Quarterly Report on Average Price of Medicines</h3>
+        <div class="summary-container">
+        <p id="average-price">Loading...</p>
+        <p class="summary">This report summarizes the average price of all available medicines in the current quarter.</p>
+    </div>
+    </section>
+              
+            <!-- Add Medicine Form -->
+    <form id="medicine-form" aria-labelledby="form-header">
+        <h3 id="form-header">Add New Medicine Below</h3>
+        <label for="medicine-name">Medicine Name:</label>
+        <input type="text" id="medicine-name" name="name" placeholder="Enter medicine name" required autocomplete="off">
+        <label for="medicine-price">Price (£):</label>
+        <input type="number" id="medicine-price" name="price" placeholder="Enter medicine price" step="0.01" required autocomplete="off">
+        <button type="submit">Add Medicine</button>
+    </form>
 
-        
+    <section id="auth-section">
+        <h3 id="form-header">Login</h3>
+        <form id="auth-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            
+            <div id="confirm-password-container" style="display: none;">
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password">
+            </div>
+            
+            <button type="submit" id="auth-submit-btn">Login</button>
+            <p>
+                <a href="#" id="toggle-link">Don't have an account? Sign up</a>
+            </p>
+        </form>
+        <p id="auth-feedback"></p>
+    </section>
+    <button id="logout-button" style="display: none;">Logout</button>
+    
+</section>
 
-    </main>
+</main>
+
+
+    <footer class="text-center mt-5">
+        <p>&copy; 2023 Medicine Tracker. All Rights Reserved.</p>
+    </footer>
+    
+
+
+
     <script src="script.js"></script>
 </body>
 </html>

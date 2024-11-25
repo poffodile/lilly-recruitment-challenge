@@ -144,6 +144,52 @@ def get_average():
     return {"average_price": round(average, 2), "message": "Average calculated successfully"}
 
 
+        # In-memory user database (temporary)
+users = []  # Temporary storage for users as a list of dictionaries
+
+@app.post("/signup")
+def signup(username: str = Form(...), password: str = Form(...)):
+    """
+    This endpoint handles user signup.
+    Args:
+        username (str): The desired username.
+        password (str): The desired password.
+    Returns:
+        dict: A message confirming signup success or failure.
+    """
+    # Validate input
+    if not username or not password:
+        return {"error": "Username and password are required."}
+
+    # Check if username already exists
+    for user in users:
+        if user["username"] == username:
+            return {"error": "Username already exists. Please choose a different one."}
+
+    # Add the new user
+    users.append({"username": username, "password": password})
+    return {"message": f"Signup successful! Welcome, {username}."}
+
+
+@app.post("/login")
+def login(username: str = Form(...), password: str = Form(...)):
+    """
+    This endpoint handles user login.
+    Args:
+        username (str): The username.
+        password (str): The password.
+    Returns:
+        dict: A message confirming login success or failure.
+    """
+    if username not in users:
+        return {"error": "User does not exist. Please sign up."}
+    
+    if users[username] != password:
+        return {"error": "Invalid credentials. Please try again."}
+    
+    return {"message": f"Welcome back, {username}!"}
+
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
